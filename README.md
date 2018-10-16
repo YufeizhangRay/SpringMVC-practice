@@ -1,2 +1,2 @@
 # springmvc-practice
-springmvc框学习实践
+springmvc框架学习实践
