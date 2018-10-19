@@ -1,5 +1,6 @@
 # springmvc-practice
-springmvc框架学习实践
+springmvc框架学习实践  
+2018年5月  
 说到`SpringMVC`就不得不再简单说一下`MVC`。  
 `MVC`(`Model–view–controller`)是一种软件架构模式，把软件系统分为三个基本部分：`模型(Model)`、`视图(View)`和`控制器(Controller)`。   
 ![](https://github.com/YufeizhangRay/image/blob/master/%E5%9B%BE%E7%89%87/MVC-Process.jpg)  
