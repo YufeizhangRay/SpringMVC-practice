@@ -14,8 +14,8 @@ springmvc框架学习实践
 ②`HanlerMapping`接收到从`DispatcherServlet`传过来的`Request`  
 `HanlerMapping`是`SpringMVC`中完成`URL`到`Controller`映射的组件。`DispatcherServlet`接收 `Request`，然后从 `HandlerMapping` 查找到处理 `Request` 的 `Controller`(因为容器`初始化时`会建立所有`URL`和`Controller`的对应关系，`一个Controller`中有`多个URL`，因为每一个方法都对应着一个不同的`URL`)，并返回给`DispatcherServlet`。  
 ③`DispatcherServlet`找到可以处理`Request`的对应的`Controller`并发送`Request`。`Controller`处理`Request`，并返回`ModelAndView`对象，`ModelAndView`是封装结果视图的组件。    
-`ModelAndView`中的`Model`其实是一个`Map`的实现类，用来存储数据。而`View`代表的则是视图，可以指定需要渲染给客户端的页面。
-⑤:视图解析器解析`ModelAndView`对象并返回对应的`视图`给客户端.
+`ModelAndView`中的`Model`其实是一个`Map`的实现类，用来存储数据。而`View`代表的则是视图，可以指定需要渲染给客户端的页面。  
+④:视图解析器解析`ModelAndView`对象并返回对应的`视图`给客户端.
 
 实现原理：  
 >在容器初始化时会建立所有 `URL` 和 `Controller `的对应关系,保存到 `Map<URL,Controller>` 中。  `Tomcat` 启动时会通知 `Spring` 初始化容器(加载 `Bean `的定义信息和初始化所有`单例Bean`)，然后 `SpringMVC` 会遍历容器中的 `Bean`，获取每一个 `Controller` 中的所有方法访问的 `URL`然后将`URL` 和 `Controller` 保存到一个 `Map` 中。  
