@@ -19,6 +19,6 @@ springmvc框架学习实践
 
 实现原理：  
 >在容器初始化时会建立所有 `URL` 和 `Controller`的对应关系,保存到 `Map<URL,Controller>` 中。  `Tomcat` 启动时会通知 `Spring` 初始化容器(加载 `Bean`的定义信息和初始化所有`单例Bean`)，然后 `SpringMVC` 会遍历容器中的 `Bean`，获取每一个 `Controller` 中的所有方法访问的 `URL`然后将`URL` 和 `Controller` 保存到一个 `Map` 中。  
-这样就可以根据 `Request `快速定位到 `Controller`，因为最终处理 `Request`的是 `Controller` 中的方法，`Map` 中只保留了 `URL` 和 `Controller `中的对应关系，所以要根据` Request` 的 `URL `进一步确认` Controller` 中的 `Method`，这一步工作的原理就是拼接 `Controller` 的 `URL`(`Controller` 上 `@RequestMapping` 的值)和方法的 `URL`(`Method` 上`@RequestMapping` 的值)，与 `Request`的 `URL` 进行匹配，找到匹配的那个方法。  
+这样就可以根据 `Request`快速定位到 `Controller`，因为最终处理 `Request`的是 `Controller` 中的方法，`Map` 中只保留了 `URL` 和 `Controller `中的对应关系，所以要根据` Request` 的 `URL `进一步确认` Controller` 中的 `Method`，这一步工作的原理就是拼接 `Controller` 的 `URL`(`Controller` 上 `@RequestMapping` 的值)和方法的 `URL`(`Method` 上`@RequestMapping` 的值)，与 `Request`的 `URL` 进行匹配，找到匹配的那个方法。  
 确定处理请求的 `Method`后，接下来的任务就是参数绑定，把 `Request` 中参数绑定到方法的形式参数上。我们只要在方法参数前面声明`@RequestParam("a")`，就可以将 `Request` 中参数` a `的值绑定到方法的该参数上。但是参数的类型则需要使用`asm 框架`来完成。  
 拥有了方法和参数类型，我们就可以通过`反射`的原理调用方法了。
